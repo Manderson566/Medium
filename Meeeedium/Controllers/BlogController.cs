@@ -19,7 +19,7 @@ namespace Meeeedium.Controllers
         public ActionResult Index()
         {
             string userid = User.Identity.GetUserId();
-            var blogs = db.Blogs.Include(b => b.Owner);
+            var blogs = db.Blogs.Include(b => b.Owner).Where(b => b.OwnerId == userid);
             return View(blogs.ToList());
         }
 
@@ -50,11 +50,13 @@ namespace Meeeedium.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Titile,TeaserText,Author,Created,Body,OwnerId")] Blog blog)
+        public ActionResult Create([Bind(Include = "Id,Title,TeaserText,Created,Body,OwnerId")] Blog blog)
         {
             if (ModelState.IsValid)
             {
                 db.Blogs.Add(blog);
+                blog.OwnerId = User.Identity.GetUserId();
+                blog.Created = DateTime.Now;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -84,11 +86,13 @@ namespace Meeeedium.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Titile,TeaserText,Author,Created,Body,OwnerId")] Blog blog)
+        public ActionResult Edit([Bind(Include = "Id,Title,TeaserText,Created,Body,OwnerId")] Blog blog)
         {
             if (ModelState.IsValid)
             {
+                blog.OwnerId = User.Identity.GetUserId();
                 db.Entry(blog).State = EntityState.Modified;
+                blog.Created = DateTime.Now;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
