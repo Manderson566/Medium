@@ -24,7 +24,7 @@ namespace Meeeedium.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            var blogs = GetBlogs();
+            var blogs = GetBlogs().OrderByDescending(o => o.Created);
             return View(blogs.ToList());
         }
 

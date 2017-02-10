@@ -17,7 +17,7 @@ namespace Meeeedium.Controllers
         public ActionResult Index()
      
         {
-            ViewBag.PublicBlogs = db.Blogs.Where(n => n.Public == true).ToList();
+            ViewBag.PublicBlogs = db.Blogs.Where(n => n.Public == true).ToList().OrderByDescending(o => o.Created);
             return View();
         }
         public ActionResult Details(int? id)
@@ -32,7 +32,7 @@ namespace Meeeedium.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.PublicBlogs = db.Blogs.Where(n => n.Public == true).ToList();
+            ViewBag.PublicBlogs = db.Blogs.Where(n => n.Public == true).ToList().OrderByDescending(o => o.Created);
             return View();
         }
 
