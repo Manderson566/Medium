@@ -214,6 +214,14 @@
     <Compile Include="Migrations\201702092131462_RemovedAuthor.Designer.cs">
       <DependentUpon>201702092131462_RemovedAuthor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702101812419_addedMyPropertyToBlogcs.cs" />
+    <Compile Include="Migrations\201702101812419_addedMyPropertyToBlogcs.Designer.cs">
+      <DependentUpon>201702101812419_addedMyPropertyToBlogcs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702101825541_fixedPublic.cs" />
+    <Compile Include="Migrations\201702101825541_fixedPublic.Designer.cs">
+      <DependentUpon>201702101825541_fixedPublic.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Blog.cs" />
@@ -249,6 +257,8 @@
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="ClassDiagram1.cd" />
+    <Content Include="ClassDiagram2.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\clean-blog.js" />
     <Content Include="Scripts\clean-blog.min.js" />
@@ -303,6 +313,7 @@
     <Content Include="Views\Blog\Details.cshtml" />
     <Content Include="Views\Blog\Edit.cshtml" />
     <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -325,6 +336,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702092131462_RemovedAuthor.resx">
       <DependentUpon>201702092131462_RemovedAuthor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702101812419_addedMyPropertyToBlogcs.resx">
+      <DependentUpon>201702101812419_addedMyPropertyToBlogcs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702101825541_fixedPublic.resx">
+      <DependentUpon>201702101825541_fixedPublic.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

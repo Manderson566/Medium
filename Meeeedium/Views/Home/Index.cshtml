@@ -33,3 +33,18 @@
         </div>
     </div>
 </div>
+@using (Html.BeginForm())
+{
+    foreach (var blog in ViewBag.PublicBlogs)
+    {
+        <a href=@Url.Action("Details", new { id = blog.Id })>
+            <h4 class="post-title">
+                @blog.Title
+            </h4>
+        </a>
+        <p>@blog.TeaserText</p>
+        <p class="post-meta"> @blog.Created </p>
+        <hr>
+    }
+}
+

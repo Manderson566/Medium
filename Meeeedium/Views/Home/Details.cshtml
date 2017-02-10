@@ -1,0 +1,25 @@
+﻿
+
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+@using (Html.BeginForm())
+{
+    foreach (var blog in ViewBag.PublicBlogs)
+    {
+            <h4 class="post-title">
+                @blog.Title
+            </h4>
+            <p>@blog.Body</p>
+            <p>@blog.Owner.UserName</p>
+        <p class="post-meta">@blog.Created </p>
+        <hr>
+    }
+}
+<p>
+    @Html.ActionLink("Back to Home", "Index")
+</p>

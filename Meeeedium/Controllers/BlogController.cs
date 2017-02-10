@@ -15,22 +15,37 @@ namespace Meeeedium.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Blog
-        public ActionResult Index()
+        private IQueryable<Blog> GetBlogs()
         {
             string userid = User.Identity.GetUserId();
-            var blogs = db.Blogs.Include(b => b.Owner).Where(b => b.OwnerId == userid);
+            return db.Blogs.Include(b => b.Owner).Where(b => b.OwnerId == userid);
+        }
+        // GET: Blog
+        [Authorize]
+        public ActionResult Index()
+        {
+            var blogs = GetBlogs();
+            return View(blogs.ToList());
+        }
+
+        //Post Blog
+        [HttpPost]
+        public ActionResult Index(BlogSearch searchBox)
+        {
+            var blogs = GetBlogs().Where(b => b.Title.Contains(searchBox.Search));
             return View(blogs.ToList());
         }
 
         // GET: Blog/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Blog blog = db.Blogs.Find(id);
+            var userId = User.Identity.GetUserId();
+            Blog blog = db.Blogs.Where(b => b.OwnerId == userId).Where(b => b.Id == id).FirstOrDefault();
             if (blog == null)
             {
                 return HttpNotFound();
@@ -39,6 +54,7 @@ namespace Meeeedium.Controllers
         }
 
         // GET: Blog/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.OwnerId = new SelectList(db.Users, "Id", "Email");
@@ -50,8 +66,9 @@ namespace Meeeedium.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,TeaserText,Created,Body,OwnerId")] Blog blog)
+        public ActionResult Create([Bind(Include = "Id,Title,TeaserText,Created,Body,OwnerId,Public")] Blog blog)
         {
+
             if (ModelState.IsValid)
             {
                 db.Blogs.Add(blog);
@@ -66,13 +83,15 @@ namespace Meeeedium.Controllers
         }
 
         // GET: Blog/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Blog blog = db.Blogs.Find(id);
+            var userId = User.Identity.GetUserId();
+            Blog blog = db.Blogs.Where(b => b.OwnerId == userId).Where(b => b.Id == id).FirstOrDefault();
             if (blog == null)
             {
                 return HttpNotFound();
@@ -86,7 +105,7 @@ namespace Meeeedium.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,TeaserText,Created,Body,OwnerId")] Blog blog)
+        public ActionResult Edit([Bind(Include = "Id,Title,TeaserText,Created,Body,OwnerId,Public")] Blog blog)
         {
             if (ModelState.IsValid)
             {
@@ -101,13 +120,15 @@ namespace Meeeedium.Controllers
         }
 
         // GET: Blog/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Blog blog = db.Blogs.Find(id);
+            var userId = User.Identity.GetUserId();
+            Blog blog = db.Blogs.Where(b => b.OwnerId == userId).Where(b => b.Id == id).FirstOrDefault();
             if (blog == null)
             {
                 return HttpNotFound();
@@ -133,6 +154,9 @@ namespace Meeeedium.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+            {
+
+            }
         }
     }
 }

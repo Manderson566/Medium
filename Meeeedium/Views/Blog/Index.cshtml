@@ -6,7 +6,18 @@
 
 <h2>Index</h2>
 
+@using (Html.BeginForm())
+{   <p>
+        @Html.TextBox("Search", null, new { @class="form-control" })
+    </p>
+    <p>
+        <input type="submit" value="Search" class="btn btn-success"/>
+        @Html.ActionLink("Clear Search", "Index")
+    </p>
+}
+
 <p>
+   
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
@@ -41,8 +52,9 @@
             @Html.DisplayFor(modelItem => item.Created)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) 
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) 
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
