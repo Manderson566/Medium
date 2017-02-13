@@ -1,16 +1,11 @@
 ﻿@{
-
     ViewBag.Title = "Index";
 }
-
 <div class="intro-header" style="background-image: url('/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="site-heading">
-                    <h1>Mic Blog</h1>
-                    <hr class="small">
-                    <span class="subheading">Mic has all the best blogs.</span>
                 </div>
             </div>
         </div>
@@ -18,33 +13,37 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-preview">
-                <a href="post.html">
-                    <h2 class="post-title">
-                        @Html.ActionLink("Create New Blog", "Create")
-                    </h2>
-                    <h3 class="post-subtitle">
-                        Want to make a new blog?
-                    </h3>
-                </a>
-                <p class="post-meta">Posted by <a href="#">Mic</a>2/8/2017</p>
+                <h4>Time to get started bloging.</h4>
+                <p>Put your opinion out there.</p>
+               @Html.ActionLink("Get Started", "Register", "Account",
+                     new { id = "registerLink" }, new { @class = "btn btn-primary" })
             </div>
         </div>
     </div>
 </div>
+
 @using (Html.BeginForm())
 {
     foreach (var blog in ViewBag.PublicBlogs)
     {
-        <a href=@Url.Action("Details", new { id = blog.Id })>
-            <h4 class="post-title">
-                @blog.Title
-            </h4>
-        </a>
-        <p>@blog.TeaserText</p>
-        <p class="post-meta"> @blog.Created </p>
-        <hr>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-preview">
+                        <a href=@Url.Action("Details", new { id = blog.Id })>
+                            <h4 class="post-title">
+                                @blog.Title
+                            </h4>
+                            <p class="post-subtitle"> @blog.TeaserText</p>
+                        </a>
+                        <p class="post-meta"> Posted by @blog.Owner.UserName on @blog.Created </p>
+                        <hr>
+                    </div>
+                    </div>
+            </div>
+        </div>
     }
 }
 

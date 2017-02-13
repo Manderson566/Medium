@@ -222,6 +222,10 @@
     <Compile Include="Migrations\201702101825541_fixedPublic.Designer.cs">
       <DependentUpon>201702101825541_fixedPublic.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702122140519_addedUserNameToModel.cs" />
+    <Compile Include="Migrations\201702122140519_addedUserNameToModel.Designer.cs">
+      <DependentUpon>201702122140519_addedUserNameToModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Blog.cs" />
@@ -244,7 +248,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="index.html" />
+    <Content Include="img\about-bg.jpg" />
+    <Content Include="img\contact-bg.jpg" />
+    <Content Include="img\home-bg.jpg" />
+    <Content Include="img\post-bg.jpg" />
+    <Content Include="img\post-sample-image.jpg" />
     <Content Include="post.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -317,7 +325,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="img\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -342,6 +349,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702101825541_fixedPublic.resx">
       <DependentUpon>201702101825541_fixedPublic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702122140519_addedUserNameToModel.resx">
+      <DependentUpon>201702122140519_addedUserNameToModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

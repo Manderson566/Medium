@@ -27,7 +27,8 @@ namespace Meeeedium
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/clean-blog.css",
-                      "~/Content/font-awesome.min.css"));
+                      "~/Content/font-awesome.min.css",
+                       "~/Content/Site.css"));
         }
     }
 }

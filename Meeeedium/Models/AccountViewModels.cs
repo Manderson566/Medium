@@ -6,7 +6,7 @@ namespace Meeeedium.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
-        [Display(Name = "Email")]
+        [Display(Name = "UserName")]
         public string Email { get; set; }
     }
 
@@ -64,6 +64,10 @@ namespace Meeeedium.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
+         
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
