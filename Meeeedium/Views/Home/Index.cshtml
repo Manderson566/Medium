@@ -1,29 +1,19 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
-<div class="intro-header" style="background-image: url('/img/home-bg.jpg')">
-    <div class="container">
+   @using (Html.BeginForm())
+   {   <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                </div>
+                <p>
+                    @Html.TextBox("Search", null, new { @class = "form-control" })
+                    <input type="submit" value="Search" class="btn btn-primary navbar-btn" />
+                    @Html.ActionLink("Clear Search", "Index", "Home", new { @class = "btn btn-primary" })
+                </p>
             </div>
         </div>
     </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="post-preview">
-                <h4>Time to get started bloging.</h4>
-                <p>Put your opinion out there.</p>
-               @Html.ActionLink("Get Started", "Register", "Account",
-                     new { id = "registerLink" }, new { @class = "btn btn-primary" })
-            </div>
-        </div>
-    </div>
-</div>
-
+   }
 @using (Html.BeginForm())
 {
     foreach (var blog in ViewBag.PublicBlogs)

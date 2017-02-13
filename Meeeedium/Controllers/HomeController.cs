@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace Meeeedium.Controllers
 {
@@ -27,13 +28,23 @@ namespace Meeeedium.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Blog blog = db.Blogs.Find(id);
+            Blog blog = db.Blogs.Where(b => b.Public == true).Where(b => b.Id == id).FirstOrDefault();
             if (blog == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.PublicBlogs = db.Blogs.Where(n => n.Public == true).ToList().OrderByDescending(o => o.Created);
+            return View(blog);
+        }
+
+        [HttpPost]
+        public ActionResult Index(BlogSearch searchBox)
+        {
+            string userid = User.Identity.GetUserId();
+            ViewBag.PublicBlogs = db.Blogs.Include(b => b.Owner).Where(b => b.Public == true).Where(b => b.Title.Contains(searchBox.Search));
             return View();
+
+            
+           
         }
 
 

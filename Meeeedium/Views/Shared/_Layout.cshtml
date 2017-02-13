@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -41,39 +42,111 @@
         </div>
 
     </nav>
-    @RenderBody()
-
-    <footer>
+    <div class="intro-header" style="background-image: url('/img/home-bg.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <ul class="list-inline text-center">
-                        <li>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/Manderson566">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                  <p class="copyright text-muted">Copyright &copy; Mic Website 2016</p>
+                    <div class="site-heading">
+                        <h4 class="textColor1">Put your opinion out there.</h4>
+                        @Html.ActionLink("Get Started", "Register", "Account",
+                     new { id = "registerLink" }, new { @class = "btn btn-primary" })
+                    </div>
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/jqueryval")
-    @RenderSection("scripts", required: false)
+        @using Microsoft.AspNet.Identity
+        @if (Request.IsAuthenticated)
+        {
+            <div id="RightColumn" style="float: right; width: 20%;">
+            <div class="row profile">
+                <div class="col-md-1">
+                    <div class="profile-sidebar">
+                        <div class="profile-userpic">
+                            <img src="http://weknowyourdreams.com/images/rabbit/rabbit-02.jpg" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    <div class="profile-usertitle">
+                        <div class="profile-usertitle-name">
+                            @Html.ActionLink(User.Identity.GetUserName() + "", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                        </div>
+                        <div class="profile-usertitle-job">
+                            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                        </div>
+                    </div>
+
+                    <div class="profile-userbuttons">
+                        @Html.ActionLink("Blog","Index","Blog", null, new { @class = "btn btn-primary btn-sm" })
+                        <button type="button" class="btn btn-primary btn-sm">Messages</button>
+                    </div>
+                    <div class="profile-usermenu">
+                        <ul class="nav">
+                            <li class="active">
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-home"></i>
+                                    Overview
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                    Account Settings
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank">
+                                    <i class="glyphicon glyphicon-ok"></i>
+                                    Tasks
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-flag"></i>
+                                    Help
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+        }
+
+        @RenderBody()
+
+
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <ul class="list-inline text-center">
+                            <li>
+                                <a href="#">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/Manderson566">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <p class="copyright text-muted">Copyright &copy; Mic Website 2016</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/jqueryval")
+        @RenderSection("scripts", required: false)
 </body>
 </html>
