@@ -5,41 +5,53 @@
     ViewBag.Title = "Details";
 }
 
+   <div id="LeftColumn" style="float: Left; padding-left: 50px;">
     <h2>Blog Details</h2>
-    <div id="LeftColumn" style="float: Left; padding-left: 50px;">
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Title)
-            </dt>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
 
-            <dd>
-                @Html.DisplayFor(model => model.Title)
-            </dd>
+                <th>
+                    @Html.DisplayNameFor(model => model.Created)
+                </th>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Owner.UserName)
-            </dt>
+                <th>
+                    @Html.DisplayNameFor(model => model.Body)
+                </th>
 
-            <dd>
-                @Html.DisplayFor(model => model.Owner.UserName)
-            </dd>
+                <th>
+                    @Html.DisplayNameFor(model => model.Owner.UserName)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.Title)
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Created)
-            </dt>
+                </td>
 
-            <dd>
-                @Html.DisplayFor(model => model.Created)
-            </dd>
+                <td>
+                    @Html.DisplayFor(model => model.Created)
+                </td>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Body)
-            </dt>
+                <td>
 
-            <dd>
-                @Html.DisplayFor(model => model.Body)
-            </dd>
+                    @Html.DisplayFor(model => model.Body)
+                </td>
 
-        </dl>
-    </div>
+                <td>
+                    @Html.DisplayFor(model => model.Owner.UserName)
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+       <p>
+           @Html.ActionLink("Back to Blogs", "Index", "Home", new { @class = "btn btn-primary" })
+       </p>
+</div>
+

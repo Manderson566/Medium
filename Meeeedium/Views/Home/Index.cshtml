@@ -18,7 +18,7 @@
 {
     foreach (var blog in ViewBag.PublicBlogs)
     {
-        <div class="container">
+        <div id="LeftColumn" style="float: Left; padding-left: 80px;">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="post-preview">
@@ -31,7 +31,7 @@
                         <p class="post-meta"> Posted by @blog.Owner.UserName on @blog.Created </p>
                         <hr>
                     </div>
-                    </div>
+                </div>
             </div>
         </div>
     }
