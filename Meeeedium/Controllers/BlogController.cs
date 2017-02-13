@@ -66,7 +66,7 @@ namespace Meeeedium.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,TeaserText,Created,Body,OwnerId,Public")] Blog blog)
+        public ActionResult Create([Bind(Include = "Id,Title,TeaserText,Body,Public")] Blog blog)
         {
 
             if (ModelState.IsValid)
@@ -105,7 +105,7 @@ namespace Meeeedium.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,TeaserText,Created,Body,OwnerId,Public")] Blog blog)
+        public ActionResult Edit([Bind(Include = "Id,Title,TeaserText,Body,Public")] Blog blog)
         {
             if (ModelState.IsValid)
             {
