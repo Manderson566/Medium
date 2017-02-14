@@ -41,9 +41,11 @@
         <br />
         <div class="checkbox">
             @Html.LabelFor(model => model.Public, htmlAttributes: new { @class = "control-label col-md-2" })
-            @Html.EditorFor(model => model.Public)
-            @Html.ValidationMessageFor(model => model.Public, "", new { @class = "text-danger" })
-        </div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Public)
+                @Html.ValidationMessageFor(model => model.Public, "", new { @class = "text-danger" })
+            </div>
+           </div>
     </div>
 
 
