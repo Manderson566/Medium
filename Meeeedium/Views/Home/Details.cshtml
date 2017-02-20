@@ -5,53 +5,18 @@
     ViewBag.Title = "Details";
 }
 
-   <div id="LeftColumn" style="float: Left; padding-left: 50px;">
-    <h2>Blog Details</h2>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Title)
-                </th>
-
-                <th>
-                    @Html.DisplayNameFor(model => model.Created)
-                </th>
-
-                <th>
-                    @Html.DisplayNameFor(model => model.Body)
-                </th>
-
-                <th>
-                    @Html.DisplayNameFor(model => model.Owner.UserName)
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    @Html.DisplayFor(model => model.Title)
-
-                </td>
-
-                <td>
-                    @Html.DisplayFor(model => model.Created)
-                </td>
-
-                <td>
-
-                    @Html.DisplayFor(model => model.Body)
-                </td>
-
-                <td>
-                    @Html.DisplayFor(model => model.Owner.UserName)
-                </td>
-            </tr>
-        </tbody>
-
-    </table>
-       <p>
-           @Html.ActionLink("Back to Blogs", "Index", "Home", new { @class = "btn btn-primary" })
-       </p>
-       </div>
-
+   <div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-preview">
+                <h4> @Html.DisplayFor(model => model.Title)</h4>
+                <p class="post-heading">@Html.DisplayFor(model => model.Body)</p>
+                <p class="post-meta"> Posted by @Html.DisplayFor(model => model.Owner.UserName) on @Html.DisplayFor(model => model.Created) </p>
+                <p class="post-subtitle">
+                    @Html.ActionLink("Back to Blogs", "Index", "Home", new { @class = "btn btn-primary" })
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+         

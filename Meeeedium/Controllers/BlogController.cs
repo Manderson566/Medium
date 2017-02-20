@@ -69,17 +69,14 @@ namespace Meeeedium.Controllers
         public ActionResult Create([Bind(Include = "Id,Title,TeaserText,Body,Public")] Blog blog)
         {
 
-            if (ModelState.IsValid)
-            {
+            
                 db.Blogs.Add(blog);
                 blog.OwnerId = User.Identity.GetUserId();
                 blog.Created = DateTime.Now;
                 db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
+           
             ViewBag.OwnerId = new SelectList(db.Users, "Id", "Email", blog.OwnerId);
-            return View(blog);
+            return RedirectToAction("Index");
         }
 
         // GET: Blog/Edit/5

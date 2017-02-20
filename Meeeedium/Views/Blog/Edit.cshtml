@@ -10,50 +10,61 @@
     @Html.AntiForgeryToken()
 
     <div class="container">
-        <h2>Edit Blog</h2>
+        <h2>Create</h2>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.TeaserText, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TeaserText, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TeaserText, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Body, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+        <div class="container">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
             </div>
         </div>
         <br />
-        <div class="checkbox">
-            @Html.LabelFor(model => model.Public, htmlAttributes: new { @class = "control-label col-md-2" })
-            @Html.EditorFor(model => model.Public)
-            @Html.ValidationMessageFor(model => model.Public, "", new { @class = "text-danger" })
+        <br />
+        <div class="container">
+            <div class="form-group">
+                @Html.LabelFor(model => model.TeaserText, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TeaserText, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TeaserText, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="container">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Body, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="container">
+            <div class="checkbox">
+                @Html.LabelFor(model => model.Public, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.Public)
+                @Html.ValidationMessageFor(model => model.Public, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+        </div>
+        }
+
+        <br />
+
+        <div class="container">
+            @Html.ActionLink("Back to List", "Index", "Blog", new { @class = "btn btn-primary" })
+            <input type="submit" value="Save" class="btn btn-success" />
         </div>
 
-    </div>
-}
-
-<br />
-
-<div class="container">
-    @Html.ActionLink("Back to List", "Index", "Blog", new { @class = "btn btn-primary" })
-    <input type="submit" value="Save" class="btn btn-success" />
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }

@@ -8,56 +8,49 @@
     <div id="LeftColumn" style="float: Left;">
         @using (Html.BeginForm())
         {   <p>
-        @Html.TextBox("Search", null, new { @class = "form-control" })
-    </p>
-    <p>
-        <input type="submit" value="Search" class="btn btn-primary" />
-        @Html.ActionLink("Clear Search", "Index", "Blog", new { @class = "btn btn-primary" })
-    </p>
+            @Html.TextBox("Search", null, new { @class = "form-control" })
+        </p>
+        <p>
+            <input type="submit" value="Search" class="btn btn-primary" />
+            @Html.ActionLink("Clear Search", "Index", "Blog", new { @class = "btn btn-primary" })
+        </p>
         }
-
-        @Html.ActionLink("Create New Blog", "Create", "Blog", new { @class = "btn btn-primary" })
-
-        <table class="table table-bordered">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Title)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.TeaserText)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Owner.UserName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Created)
-                </th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <th>
-                        @Html.DisplayFor(model => item.Title)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TeaserText)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Owner.UserName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Created)
-                        <br />
-                    </td>
-                    <td>
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "text-primary" })
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "text-primary" })
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "text-primary" })
-                    </td>
-
-                </tr>
-            }
-        </table>
     </div>
-</div>
+
+
+        <div class="text-center">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-preview">
+                        @Html.ActionLink("Create New Blog", "Create", "Blog", new { @class = "btn btn-primary" })
+                        <br />
+                        <br />
+                        @foreach (var item in Model)
+                        {
+                            <h4> @Html.DisplayFor(model => item.Title)</h4>
+                            <p>@Html.DisplayFor(modelItem => item.TeaserText)</p>
+                                            <p class="post-meta"> Posted by @Html.DisplayFor(modelItem => item.Owner.UserName) on @Html.DisplayFor(modelItem => item.Created) </p>
+                                            <p class="post-subtitle">
+                                                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "text-primary" })
+                                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "text-primary" })
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "text-primary" })
+                                            </p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+

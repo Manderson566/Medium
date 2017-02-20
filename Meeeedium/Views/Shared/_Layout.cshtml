@@ -18,15 +18,6 @@
 
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container-fluid">
-
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    Menu <i class="fa fa-bars"></i>
-                </button>
-                @Html.ActionLink("Create Blog", "Index", "Blog", new {@class = "navbar-brand" })
-            </div>
-
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-0">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
@@ -56,63 +47,7 @@
         </div>
     </div>
 
-        @using Microsoft.AspNet.Identity
-        @if (Request.IsAuthenticated)
-        {
-            <div id="RightColumn" style="float: right; width: 20%;">
-            <div class="row profile">
-                <div class="col-md-1">
-                    <div class="profile-sidebar">
-                        <div class="profile-userpic">
-                            <img src="http://weknowyourdreams.com/images/rabbit/rabbit-02.jpg" class="img-responsive" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-                    <div class="profile-usertitle">
-                        <div class="profile-usertitle-name">
-                            @Html.ActionLink(User.Identity.GetUserName() + "", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-                        </div>
-                        <div class="profile-usertitle-job">
-                            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
-                        </div>
-                    </div>
-
-                    <div class="profile-userbuttons">
-                        @Html.ActionLink("Blog","Index","Blog", null, new { @class = "btn btn-primary btn-sm" })
-                        <button type="button" class="btn btn-primary btn-sm">Messages</button>
-                    </div>
-                    <div class="profile-usermenu">
-                        <ul class="nav">
-                            <li class="active">
-                                <a href="#">
-                                    <i class="glyphicon glyphicon-home"></i>
-                                    Overview
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="glyphicon glyphicon-user"></i>
-                                    Account Settings
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="glyphicon glyphicon-ok"></i>
-                                    Tasks
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="glyphicon glyphicon-flag"></i>
-                                    Help
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-        }
-
+      
         @RenderBody()
 
 
