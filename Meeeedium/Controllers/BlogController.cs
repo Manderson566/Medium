@@ -104,16 +104,14 @@ namespace Meeeedium.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Title,TeaserText,Body,Public")] Blog blog)
         {
-            if (ModelState.IsValid)
-            {
+            
                 blog.OwnerId = User.Identity.GetUserId();
                 db.Entry(blog).State = EntityState.Modified;
                 blog.Created = DateTime.Now;
                 db.SaveChanges();
+                
+                 ViewBag.OwnerId = new SelectList(db.Users, "Id", "Email", blog.OwnerId);
                 return RedirectToAction("Index");
-            }
-            ViewBag.OwnerId = new SelectList(db.Users, "Id", "Email", blog.OwnerId);
-            return View(blog);
         }
 
         // GET: Blog/Delete/5
